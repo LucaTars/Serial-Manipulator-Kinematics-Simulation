@@ -1,0 +1,1049 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Doc
+\end_layout
+
+\begin_layout Date
+2020/11/8
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The files
+\end_layout
+
+\begin_layout Standard
+The files are:
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+create_rob.m
+\family default
+, a MATLAB script containing a function to create a robot object and its
+ variables
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+model.slx
+\family default
+, the Simulink simulation
+\end_layout
+
+\begin_layout Enumerate
+Other MATLAB scripts used internally by the simulator
+\end_layout
+
+\begin_layout Section
+Creating the robot object
+\end_layout
+
+\begin_layout Standard
+The structure of the serial manipulator must be specified in a file with
+ the following structure:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="2">
+<features islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="7cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Content
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\noindent
+\align left
+
+\series bold
+Example
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number of joints
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+type of each joint (0 = revolute, 1 = prismatic)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+0 0 0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DH parameters (
+\begin_inset Formula $\theta,d,a,\alpha$
+\end_inset
+
+) for each joint
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+1.5708 0.08 0 0
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+0 0 0 1.5708
+\end_layout
+
+\begin_layout Plain Layout
+
+\family typewriter
+0 0 0.15 0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DH parameters specifying the end effector config wrt last joint
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+0 0 0.21 0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lower joint limits
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+-3.14 -3 -3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Upper joint limits
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+3.14 3 3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of tasks to be executed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Name of each task followed by associated gain
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+distance 1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mode of execution
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+sim
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Name of robot
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+zrobot
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mode of execution can be:
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+run
+\family default
+: simulation without plot
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+sim
+\family default
+: simulation: with plot
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+real
+\family default
+: input joint positions to real robot (to be worked on)
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+all
+\family default
+: combines sim and real
+\end_layout
+
+\begin_layout Standard
+The possible tasks are: distance, alignment (more to be added).
+\end_layout
+
+\begin_layout Standard
+To create the variables of the robot object, the command 
+\family typewriter
+create_rob(filename)
+\family default
+ where 
+\family typewriter
+filename
+\family default
+ is the path of the file described above.
+\end_layout
+
+\begin_layout Section
+The simulator
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename simulator.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Simulink scheme.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:simulink"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The main Simulink scheme of the simulator is shown in Figure (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:simulink"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+It is composed of 5 main components:
+\end_layout
+
+\begin_layout Enumerate
+GM (Geometric Model) block
+\end_layout
+
+\begin_layout Enumerate
+KM (Kinematic Model) block
+\end_layout
+
+\begin_layout Enumerate
+P block
+\end_layout
+
+\begin_layout Enumerate
+J# block
+\end_layout
+
+\begin_layout Enumerate
+R,DCL block
+\end_layout
+
+\begin_layout Subsection
+Geometric Model
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename gm.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Geometric Model.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GM"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Geometric Model computes the transformation matrices.
+ It is divided into 2 modules:
+\end_layout
+
+\begin_layout Enumerate
+gm1 takes as input the 
+\begin_inset Formula $q$
+\end_inset
+
+ vector and the variables specifying the topology of the robot, and outputs
+ the vector of transformation matrices from joint to joint, that is, 
+\begin_inset Formula $_{i}^{i-1}T,i=1,..,n,e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+gm2 takes as input the output of gm1 and outputs the transformation matrices
+ from base to joint (that is, 
+\begin_inset Formula $_{i}^{O}T,i=1,..,n$
+\end_inset
+
+) and 
+\begin_inset Formula $_{e}^{O}T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The 2 modules are MATLAB functions.
+\end_layout
+
+\begin_layout Subsection
+Kinematic Model
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename km.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Kinematic Model.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:KM"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Kinematic Model computes the Jacobian matrices (for now only the basic
+ ones).
+ It is divided into 2 modules:
+\end_layout
+
+\begin_layout Enumerate
+km1 takes as input the transformation matrices 
+\begin_inset Formula $_{e}^{O}T$
+\end_inset
+
+ and the ones from base to each joint (
+\begin_inset Formula $_{i}^{O}T,i=1,...,n$
+\end_inset
+
+).
+ It outputs two collections of data:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+r
+\family default
+ , whose (
+\begin_inset Formula $i,j,k$
+\end_inset
+
+)-th element is the 
+\begin_inset Formula $i$
+\end_inset
+
+-th component of the ray vector 
+\begin_inset Formula $r_{k,j-1}$
+\end_inset
+
+ (where the -1 is due to MATLAB's indexing convention starting from 1),
+ projected in base frame.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+k
+\family default
+, whose (
+\begin_inset Formula $i,j$
+\end_inset
+
+)-th element is the i-th component of 
+\begin_inset Formula $^{O}k_{i}$
+\end_inset
+
+ (z axis of the frame associated to joint 
+\begin_inset Formula $i$
+\end_inset
+
+, projected in base coordinates).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+km2 takes the output of km1 as input, and computes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+J, whose (
+\begin_inset Formula $i,j,k$
+\end_inset
+
+)-th element is the 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+-th element of the basic Jacobian of frame 
+\begin_inset Formula $k$
+\end_inset
+
+ with respect to the base (i.e.
+ J contains all the basic Jacobians computed with respect to base frame).
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Je0
+\family default
+, the Jacobian of the end effector, with respect to base frame, required
+ for the task specified in the simulations.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+P block
+\end_layout
+
+\begin_layout Standard
+The P block consists of a MATLAB functions which computes the error between
+ end effector and goal frames, starting from the transformation matrices
+ of the two frames.
+\end_layout
+
+\begin_layout Standard
+Inputs: 
+\begin_inset Formula $_{e}^{O}T$
+\end_inset
+
+,
+\begin_inset Formula $_{g}^{O}T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Output: the error vector, with structure
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\textbf{e}=\begin{bmatrix}\textbf{\ensuremath{\rho_{g/e}}}\\
+\eta
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\textbf{\ensuremath{\rho_{g/e}}}$
+\end_inset
+
+ is the misalignment between end effector and goal frame, and 
+\begin_inset Formula $\eta$
+\end_inset
+
+ is the distance between the two frames.
+\end_layout
+
+\begin_layout Standard
+In case the file specifies only the 
+\begin_inset Quotes eld
+\end_inset
+
+distance
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+alignment
+\begin_inset Quotes erd
+\end_inset
+
+ tasks, only the corresponding part of the error vector will be computed.
+\end_layout
+
+\begin_layout Standard
+To compute 
+\begin_inset Formula $\textbf{\ensuremath{\rho_{g/e}}}$
+\end_inset
+
+ from the input transformation matrices, the unit vector lemma is used.
+\end_layout
+
+\begin_layout Subsection
+J# block
+\end_layout
+
+\begin_layout Standard
+The J# block consists of a MATLAB functions which performs the inverse kinematic
+s.
+\end_layout
+
+\begin_layout Standard
+Inputs: 
+\begin_inset Formula $\mathbf{\mathbf{\dot{\bar{x}}}}$
+\end_inset
+
+ (desired end effector velocity), 
+\begin_inset Formula $J$
+\end_inset
+
+ (end effector Jacobian wrt base frame)
+\end_layout
+
+\begin_layout Standard
+Output: 
+\begin_inset Formula $\mathbf{\mathbf{\dot{\bar{q}}}}$
+\end_inset
+
+ (desired joint velocities)
+\end_layout
+
+\begin_layout Standard
+To compute the joint velocities, SVD decomposition is used.
+ SVO regularization is performed using a straight line regularization function
+ (to be improved); the regularization threshold can be modified by changing
+ the variable 
+\family typewriter
+SVO_thr
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+R,DCL block
+\end_layout
+
+\begin_layout Standard
+The R,DCL block simulates the real robot.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename rdcl.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The R,DCL block internals.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:rdcl"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For now, it doesn't actually implement the DCL; the joint velocities are
+ simply returned without any modification.
+ The other output are the joint positions, obtained by integrating the joint
+ velocities, applying the joint limits (using a saturator) and normalizing
+ them in the range 
+\begin_inset Formula $[-\pi,\pi]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There is also a block that plots the robot configuration using graphics
+ from Peter Corke's Robotics Toolbox (for now).
+\end_layout
+
+\begin_layout Section
+How to use
+\end_layout
+
+\begin_layout Standard
+To use this library to simulate your favourite serial manipulator, you have
+ to:
+\end_layout
+
+\begin_layout Enumerate
+Create a robot file as explained in ..
+ and call the function 
+\family typewriter
+create_robot
+\family default
+ on it.
+\end_layout
+
+\begin_layout Enumerate
+In the Simulink model, change the input of the 
+\family typewriter
+TOg
+\family default
+ and 
+\family typewriter
+vg/0
+\family default
+ blocks.
+\end_layout
+
+\begin_layout Enumerate
+Run the Simulink scheme.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename sim.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Image from a simulation: on the left the simulation position error, on the
+ right the graphical representation of the robot.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
